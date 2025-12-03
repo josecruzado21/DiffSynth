@@ -1,0 +1,28 @@
+/share/data/willett-group/jcruzado/miniconda/envs/wan/lib/python3.11/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/share/data/willett-group/jcruzado/miniconda/envs/wan/lib/python3.11/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+To avoid repeatedly downloading model files, (Wan-AI/Wan2.2-TI2V-5B, models_t5_umt5-xxl-enc-bf16.pth) is redirected to (Wan-AI/Wan2.1-T2V-1.3B, models_t5_umt5-xxl-enc-bf16.pth). You can use `redirect_common_files=False` to disable file redirection.
+aaaaaaa
+./models
+Wan-AI/Wan2.1-T2V-1.3B
+models_t5_umt5-xxl-enc-bf16.pth
+./models/Wan-AI/Wan2.1-T2V-1.3B/models_t5_umt5-xxl-enc-bf16.pth
+[]
+Loading models from: []
+Traceback (most recent call last):
+  File "/share/data/speech-lang/users/jcruzado/repos/DiffSynth-Studio/slurm_jobs/Wan2.2-TI2V-5B.py", line 8, in <module>
+    pipe = WanVideoPipeline.from_pretrained(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/share/data/speech-lang/users/jcruzado/repos/DiffSynth-Studio/diffsynth/pipelines/wan_video_new.py", line 381, in from_pretrained
+    model_manager.load_model(
+  File "/share/data/speech-lang/users/jcruzado/repos/DiffSynth-Studio/diffsynth/models/model_manager.py", line 408, in load_model
+    if model_detector.match(file_path, state_dict):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/share/data/speech-lang/users/jcruzado/repos/DiffSynth-Studio/diffsynth/models/model_manager.py", line 166, in match
+    state_dict = load_state_dict(file_path)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/share/data/speech-lang/users/jcruzado/repos/DiffSynth-Studio/diffsynth/models/utils.py", line 66, in load_state_dict
+    if file_path.endswith(".safetensors"):
+       ^^^^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'endswith'

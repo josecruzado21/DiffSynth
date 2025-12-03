@@ -351,7 +351,7 @@ class WanVideoPipeline(BasePipeline):
         torch_dtype: torch.dtype = torch.bfloat16,
         device: Union[str, torch.device] = "cuda",
         model_configs: list[ModelConfig] = [],
-        tokenizer_config: ModelConfig = ModelConfig(model_id="Wan-AI/Wan2.1-T2V-1.3B", origin_file_pattern="google/*"),
+        tokenizer_config: ModelConfig = ModelConfig(model_id="Wan-AI/Wan2.2-TI2V-5B", origin_file_pattern="google/*"),
         audio_processor_config: ModelConfig = None,
         redirect_common_files: bool = True,
         use_usp=False,

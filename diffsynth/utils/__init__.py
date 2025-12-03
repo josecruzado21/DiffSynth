@@ -165,7 +165,7 @@ class ModelConfig:
     offload_device: Optional[Union[str, torch.device]] = None
     offload_dtype: Optional[torch.dtype] = None
     local_model_path: str = None
-    skip_download: bool = False
+    skip_download: bool = True
 
     def download_if_necessary(self, use_usp=False):
         if self.path is None:
@@ -222,6 +222,12 @@ class ModelConfig:
                 dist.barrier(device_ids=[dist.get_rank()])
                 
             # Return downloaded files
+            print("aaaaaaa")
+            print(self.local_model_path)
+            print(self.model_id)
+            print(self.origin_file_pattern)
+            print(os.path.join(self.local_model_path, self.model_id, self.origin_file_pattern))
+            print(glob.glob(os.path.join(self.local_model_path, self.model_id, self.origin_file_pattern)))
             if is_folder:
                 self.path = os.path.join(self.local_model_path, self.model_id, self.origin_file_pattern)
             else:
