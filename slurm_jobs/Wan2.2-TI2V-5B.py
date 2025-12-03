@@ -5,21 +5,17 @@ from diffsynth.pipelines.wan_video_new import WanVideoPipeline, ModelConfig
 from modelscope import dataset_snapshot_download
 
 
-breakpoint()
 pipe = WanVideoPipeline.from_pretrained(
     torch_dtype=torch.bfloat16,
     device="cuda",
     model_configs=[
-        ModelConfig(model_id="Wan-AI/Wan2.2-TI2V-5B", origin_file_pattern="models_t5_umt5-xxl-enc-bf16.pth", offload_device="cpu"),
+        ModelConfig(model_id="Wan-AI/Wan2.2-TI2V-5B", origin_file_pattern="models_t5_umt5-xxl-enc-bf16*.pth", offload_device="cpu"),
         ModelConfig(model_id="Wan-AI/Wan2.2-TI2V-5B", origin_file_pattern="diffusion_pytorch_model*.safetensors", offload_device="cpu"),
-        ModelConfig(model_id="Wan-AI/Wan2.2-TI2V-5B", origin_file_pattern="Wan2.2_VAE.pth", offload_device="cpu"),
+        ModelConfig(model_id="Wan-AI/Wan2.2-TI2V-5B", origin_file_pattern="Wan2.2_VAE*.pth", offload_device="cpu"),
     ],
 )
-breakpoint()
 pipe.load_lora(pipe.dit, "models/train/Wan2.2-TI2V-5B_lora/epoch-4.safetensors", alpha=1)
-breakpoint()
 pipe.enable_vram_management()
-breakpoint()
 input_image = VideoData("data/data_fg/videos/forrest1.mp4", height=480, width=832)[0]
 
 video = pipe(

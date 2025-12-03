@@ -369,7 +369,6 @@ class WanVideoPipeline(BasePipeline):
                 if model_config.origin_file_pattern in redirect_dict and model_config.model_id != redirect_dict[model_config.origin_file_pattern]:
                     print(f"To avoid repeatedly downloading model files, ({model_config.model_id}, {model_config.origin_file_pattern}) is redirected to ({redirect_dict[model_config.origin_file_pattern]}, {model_config.origin_file_pattern}). You can use `redirect_common_files=False` to disable file redirection.")
                     model_config.model_id = redirect_dict[model_config.origin_file_pattern]
-        
         # Initialize pipeline
         pipe = WanVideoPipeline(device=device, torch_dtype=torch_dtype)
         if use_usp: pipe.initialize_usp()
@@ -383,7 +382,7 @@ class WanVideoPipeline(BasePipeline):
                 device=model_config.offload_device or device,
                 torch_dtype=model_config.offload_dtype or torch_dtype
             )
-        
+        breakpoint()
         # Load models
         pipe.text_encoder = model_manager.fetch_model("wan_video_text_encoder")
         dit = model_manager.fetch_model("wan_video_dit", index=2)
