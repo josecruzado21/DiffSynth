@@ -14,7 +14,7 @@ pipe = WanVideoPipeline.from_pretrained(
         ModelConfig(model_id="Wan-AI/Wan2.2-TI2V-5B", origin_file_pattern="Wan2.2_VAE*.pth", offload_device="cpu"),
     ],
 )
-pipe.load_lora(pipe.dit, "models/train/Wan2.2-TI2V-5B_lora/epoch-4.safetensors", alpha=1)
+pipe.load_lora(pipe.dit, "models/train/Wan2.2-TI2V-5B_lora_fg1/epoch-4.safetensors", alpha=1)
 pipe.enable_vram_management()
 input_image = VideoData("data/data_fg/videos/forrest1.mp4", height=480, width=832)[0]
 
